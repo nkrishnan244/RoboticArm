@@ -14,8 +14,16 @@ private:
     // glm::vec3 normal; 
 
 public:
+
+    // Constructors/Destructors
     Vertex();
+    Vertex(glm::vec3 position);
     ~Vertex();
+
+    // Accessors
+
+    // Modifiers
+    void setPosition(glm::vec3 position);
 };
 
 #endif

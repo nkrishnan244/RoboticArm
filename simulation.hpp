@@ -14,11 +14,20 @@ private:
     int WINDOW_WIDTH;
     int WINDOW_HEIGHT;
 
-    // Initializations
+    // Shaders
+    std::vector<Shader*> shaders;
+
+    // Model params
+    std::vector<Model*> models; 
+
+    // Initialize OpenGL window
     bool initGLFW();
     bool initGLFWWindow(const char* title);
     bool initGLEW();
     void initOpenGLOptions();
+
+    // Initialize Model
+    void initModel();
 
     // Updates
     void updateKeyboardInput();
@@ -35,6 +44,7 @@ public:
 
     // Public Functions
     void update();
+    void render();
 
 };
 

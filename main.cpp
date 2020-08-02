@@ -9,6 +9,7 @@ int main()
     while(!sim.getWindowShouldClose())
     {
         sim.update();
+        sim.render();
     }
     cout << "hello world" << "\n";
     return 0;

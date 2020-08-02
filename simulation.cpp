@@ -1,5 +1,6 @@
 #include "simulation.hpp"
 #include <iostream>
+#include "shader.hpp"
 
 using namespace std;
 
@@ -74,6 +75,12 @@ void Simulation::updateKeyboardInput()
     }
 }
 
+// Initialize Model
+void Simulation::initModel()
+{
+
+}
+
 Simulation::Simulation()
 {
     this->WINDOW_WIDTH = 1920;
@@ -109,4 +116,26 @@ void Simulation::update()
     glfwPollEvents(); // allows cursor/keyboard to interact with window
 
     this->updateKeyboardInput();
+}
+
+// Render the individual meshes 
+void Simulation::render()
+{
+    // clear the previous frames so we can make a new frame
+    glClearColor(0.f, 0.f, 0.f, 1.f); // set everything to black
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // clear buffers
+
+    // render each mesh
+    for (auto& i: this->models)
+    {
+        i->render(this->shaders[0]);
+    }
+
+    // end draw
+    glfwSwapBuffers(window); // back buffer is being drawn to while front buffer is being shown, this brings back one to the front
+    glFlush(); // Execute all commands in buffer
+
+    // unbind everything
+    glBindVertexArray(0);
+    glUseProgram(0);
 }

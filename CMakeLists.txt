@@ -17,6 +17,12 @@ pkg_search_module(GLFW REQUIRED glfw3)
 
 include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS} /home/nikhil/SOIL2/include)
 
-add_executable(${This} main.cpp simulation.cpp)
+add_executable(${This} main.cpp 
+    simulation.cpp
+    model.cpp
+    shader.cpp
+    vertex.cpp
+    cylinder.cpp
+    mesh.cpp)
 
 target_link_libraries(${This} /home/nikhil/SOIL2/lib/libsoil2.so ${OPENGL_LIBRARIES} ${GLFW_STATIC_LIBRARIES} ${GLEW_LIBRARIES})

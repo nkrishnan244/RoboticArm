@@ -7,12 +7,13 @@
 class Cylinder
 {
 private:
-    std::vector<Vertex> vertices;
+    std::vector<Vertex*> vertices;
 
 public:
     Cylinder();
     ~Cylinder();
 
+    // Modifiers
     void setVertices(double radius, double height);
 };
 

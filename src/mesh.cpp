@@ -56,7 +56,7 @@ void Mesh::render(Shader* shader)
     glBindVertexArray(this->VAO);
 
     // actually render the object
-    glDrawArrays(GL_TRIANGLES, 0, this->nrOfVertices); 
+    glDrawArrays(  GL_TRIANGLE_STRIP, 0, this->nrOfVertices); 
 
     // Unbind everything after rendering
     glBindVertexArray(0);

@@ -5,11 +5,16 @@ using namespace std;
 // Initializers
 void Model::initLinks()
 {
-    double radius = 2.0;
-    double height = 5.0;
+    double radius = 0.2;
+    double height = 1.0;
+
+    vector<Vertex*> vertices; 
 
     Cylinder* cyl = new Cylinder();
-    cyl->setVertices(radius, height);
+    cyl->setVertices(vertices, radius, height);
+    
+    this->links.push_back(cyl);
+    this->meshes.push_back(new Mesh(vertices));
 }
 
 void Model::initMeshes()
@@ -30,8 +35,8 @@ void Model::initMeshes()
 // Constructors/Destructors 
 Model::Model()
 {
-    // this->initLinks();
-    this->initMeshes();
+    this->initLinks();
+    // this->initMeshes();
 }
 
 Model::~Model()

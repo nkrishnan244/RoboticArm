@@ -9,7 +9,6 @@ class Model
 {
 private:
     // Parts of the model
-    std::vector<Cylinder*> links; 
     std::vector<Mesh*> meshes; 
 
     // Initializers
@@ -17,6 +16,8 @@ private:
     void initMeshes();
 
 public:
+    // this will become private
+    std::vector<Cylinder*> links; 
 
     // Constructors/Destructors
     Model();

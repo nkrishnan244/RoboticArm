@@ -77,6 +77,8 @@ void Shader::linkProgram(GLuint vertexShader, GLuint fragmentShader)
     */
     glLinkProgram(this->id); 
 
+    cout << this->id << "\n";
+
     glGetProgramiv(this->id, GL_LINK_STATUS, &success);
     if (!success)
     {

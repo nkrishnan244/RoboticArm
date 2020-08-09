@@ -25,6 +25,7 @@ add_executable(${This}
     src/vertex.cpp
     src/cylinder.cpp
     src/mesh.cpp
+    src/camera.cpp
 )
 
 target_link_libraries(${This} /home/nikhil/SOIL2/lib/libsoil2.so ${OPENGL_LIBRARIES} ${GLFW_STATIC_LIBRARIES} ${GLEW_LIBRARIES})

@@ -30,12 +30,13 @@ void Model::initMeshes()
 // Constructors/Destructors 
 Model::Model()
 {
-    this->initLinks();
+    // this->initLinks();
     this->initMeshes();
 }
 
 Model::~Model()
 {
+
     for (auto*& i:this->links)
     {
         delete i;
@@ -47,6 +48,7 @@ void Model::render(Shader* shader)
 {
     // use program
     shader->use();
+    
 
     for (auto& i : this->meshes)
     {

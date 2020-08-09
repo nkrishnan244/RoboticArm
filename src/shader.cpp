@@ -29,7 +29,6 @@ string Shader::loadShaderSource(char* fileName)
     {
         cout << "ERROR::SHADER::LOAD_SHADER_SOURCE::COULD_NOT_OPEN_FILE: " << fileName << "\n";
     }
-
     in_file.close();
 
     return src;
@@ -47,6 +46,7 @@ GLuint Shader::loadShader(GLenum type, char* fileName)
     string str_src = this->loadShaderSource(fileName);
 
     const GLchar* src = str_src.c_str(); // string to c string
+    glShaderSource(shader, 1, &src, NULL); // set the source string as the shader
     glCompileShader(shader); // compile the code that we loaded in for the shader
 
     glGetShaderiv(shader, GL_COMPILE_STATUS, &success); // See if shader succesfully compiled (-1 or 1)
@@ -62,7 +62,7 @@ GLuint Shader::loadShader(GLenum type, char* fileName)
 }
 
 // Actually move the shaders to a program and link it
-void Shader::linkProgram(GLuint vertexShader)
+void Shader::linkProgram(GLuint vertexShader, GLuint fragmentShader)
 {
     GLint success = true;
     char infoLog[512];
@@ -70,6 +70,7 @@ void Shader::linkProgram(GLuint vertexShader)
     this->id = glCreateProgram(); // A program object is an object to which shader objects can be attached
 
     glAttachShader(this->id, vertexShader); // Attach shader to program
+    glAttachShader(this->id, fragmentShader);
 
     /* will be used to create an executable that will run on the programmable vertex processor
     essentially runs this program every time we send in a vertex
@@ -90,10 +91,15 @@ void Shader::linkProgram(GLuint vertexShader)
 // Constructors/Destructors
 Shader::Shader()
 {
-    char* vertex_file_name;
+    // load in vertex shader (essentially you can manipulate the position of vertices) 
+    char* vertex_file_name = "shaders/vertex_core.glsl";
     GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertex_file_name);
 
-    this->linkProgram(vertexShader);
+    // load in fragment shader (essentially you can manipulate the color distribution)
+    char* fragment_file_name = "shaders/fragment_core.glsl";
+    GLuint fragmentShader = loadShader(GL_FRAGMENT_SHADER, fragment_file_name);
+
+    this->linkProgram(vertexShader, fragmentShader);
 
     // delete shaders and free up memory
     glDeleteShader(vertexShader);

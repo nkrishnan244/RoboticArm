@@ -20,7 +20,7 @@ private:
     GLuint loadShader(GLenum type, char* fileName);
 
     // Link shaders
-    void linkProgram(GLuint vertexShader);
+    void linkProgram(GLuint vertexShader, GLuint fragmentShader);
 
 public:
 

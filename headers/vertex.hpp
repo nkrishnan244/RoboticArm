@@ -21,6 +21,7 @@ public:
     ~Vertex();
 
     // Accessors
+    glm::vec3 getPosition() const;
 
     // Modifiers
     void setPosition(glm::vec3 position);

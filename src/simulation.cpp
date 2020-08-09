@@ -75,10 +75,16 @@ void Simulation::updateKeyboardInput()
     }
 }
 
+// Initialize Shader
+void Simulation::initShaders()
+{
+    this->shaders.push_back(new Shader());
+}
+
 // Initialize Model
 void Simulation::initModel()
 {
-
+    this->models.push_back(new Model());
 }
 
 Simulation::Simulation()
@@ -90,6 +96,9 @@ Simulation::Simulation()
     this->initGLFWWindow("Robotic Arm Simulation");
     this->initGLEW();
     this->initOpenGLOptions();
+
+    this->initShaders();
+    this->initModel();
 }
 
 Simulation::~Simulation()
@@ -130,6 +139,7 @@ void Simulation::render()
     {
         i->render(this->shaders[0]);
     }
+    
 
     // end draw
     glfwSwapBuffers(window); // back buffer is being drawn to while front buffer is being shown, this brings back one to the front

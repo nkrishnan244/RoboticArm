@@ -16,6 +16,11 @@ Vertex::~Vertex()
 
 }
 
+glm::vec3 Vertex::getPosition() const
+{
+    return this->position;
+}
+
 void Vertex::setPosition(glm::vec3 position)
 {
     this->position = position;

@@ -27,6 +27,7 @@ private:
     void initOpenGLOptions();
 
     // Initialize Model
+    void initShaders();
     void initModel();
 
     // Updates

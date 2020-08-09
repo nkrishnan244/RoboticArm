@@ -15,14 +15,16 @@ set(SOIL2 /home/nikhil/SOIL2/lib/libsoil2.so)
 
 pkg_search_module(GLFW REQUIRED glfw3)
 
-include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS} /home/nikhil/SOIL2/include)
+include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS} /home/nikhil/SOIL2/include /home/nikhil/RoboticArm/headers)
 
-add_executable(${This} main.cpp 
-    simulation.cpp
-    model.cpp
-    shader.cpp
-    vertex.cpp
-    cylinder.cpp
-    mesh.cpp)
+add_executable(${This} 
+    src/main.cpp 
+    src/simulation.cpp
+    src/model.cpp
+    src/shader.cpp
+    src/vertex.cpp
+    src/cylinder.cpp
+    src/mesh.cpp
+)
 
 target_link_libraries(${This} /home/nikhil/SOIL2/lib/libsoil2.so ${OPENGL_LIBRARIES} ${GLFW_STATIC_LIBRARIES} ${GLEW_LIBRARIES})
